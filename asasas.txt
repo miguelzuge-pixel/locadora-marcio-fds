@@ -1,0 +1,236 @@
+programa {
+  // VARIÁVEIS GLOBAIS: Permitem que o status da viagem seja compartilhado entre as funções
+  cadeia destino_reservado = "Nenhum pacote contratado"
+  logico possui_reserva = falso
+
+  // FUNÇÃO MENU DE DESTINOS
+  funcao inteiro menu_destinos() {
+    inteiro opcao
+    inteiro opcao_sub
+    faca {
+      limpa()
+      escreva("\n=== DESTINOS DISPONÍVEIS ===\n\n")
+      escreva("1) Planetas Rochosos\n")
+      escreva("2) Luas do Sistema Solar\n")
+      escreva("3) Exoplanetas Distantes\n")
+      escreva("4) Turismo em Buraco Negro\n")
+      escreva("5) Voltar ao Menu Principal\n\n")
+      escreva("Escolha uma categoria de destino: ")
+      leia(opcao)
+      
+      escolha (opcao) {
+        caso 1:
+          limpa()
+          escreva("\n--- PLANETAS ROCHOSOS ---\n\n")
+          escreva("1) Marte (Colônia de Domo)\n")
+          escreva("2) Mercúrio (Visualização de Linha de Fogo)\n")
+          escreva("3) Vênus (Cruzeiro Atmosférico de Alta Altitude)\n\n")
+          escreva("Escolha o seu destino (ou 0 para voltar): ")
+          leia(opcao_sub)
+          
+          se (opcao_sub == 1) {
+            destino_reservado = "Marte (Colônia de Domo)"
+            possui_reserva = verdadeiro
+          }
+          se (opcao_sub == 2) {
+            destino_reservado = "Mercúrio (Linha de Fogo)"
+            possui_reserva = verdadeiro
+          }
+          se (opcao_sub == 3) {
+            destino_reservado = "Vênus (Cruzeiro Atmosférico)"
+            possui_reserva = verdadeiro
+          }
+          se (opcao_sub >= 1 e opcao_sub <= 3) {
+            escreva("\nPassagem reservada com sucesso para: ", destino_reservado, "!")
+            escreva("\nPressione ENTER para continuar... ")
+            leia(opcao_sub)
+            retorne 5
+          }
+          pare
+          
+        caso 2:
+          limpa()
+          escreva("\n--- LUAS DO SISTEMA SOLAR ---\n\n")
+          escreva("1) Europa (Mergulho Subglacial)\n")
+          escreva("2) Titã (Voo de Asa Delta em Metano Líquido)\n")
+          escreva("3) Encélado (Safári de Gêiseres)\n\n")
+          escreva("Escolha o seu destino (ou 0 para voltar): ")
+          leia(opcao_sub)
+          
+          se (opcao_sub == 1) {
+            destino_reservado = "Europa (Mergulho Subglacial)"
+            possui_reserva = verdadeiro
+          }
+          se (opcao_sub == 2) {
+            destino_reservado = "Titã (Voo de Asa Delta)"
+            possui_reserva = verdadeiro
+          }
+          se (opcao_sub == 3) {
+            destino_reservado = "Encélado (Safári de Gêiseres)"
+            possui_reserva = verdadeiro
+          }
+          se (opcao_sub >= 1 e opcao_sub <= 3) {
+            escreva("\nPassagem reservada com sucesso para: ", destino_reservado, "!")
+            escreva("\nPressione ENTER para continuar... ")
+            leia(opcao_sub)
+            retorne 5
+          }
+          pare
+          
+        caso 3:
+          limpa()
+          escreva("\n--- EXOPLANETAS DISTANTES ---\n\n")
+          escreva("1) Kepler-22b (Mundo Oceânico)\n")
+          escreva("2) Proxima Centauri b (O Início da Fronteira)\n")
+          escreva("3) TRAPPIST-1e (Céu de Sete Planetas)\n\n")
+          escreva("Escolha o seu destino (ou 0 para voltar): ")
+          leia(opcao_sub)
+          
+          se (opcao_sub == 1) {
+            destino_reservado = "Kepler-22b (Mundo Oceânico)"
+            possui_reserva = verdadeiro
+          }
+          se (opcao_sub == 2) {
+            destino_reservado = "Proxima Centauri b"
+            possui_reserva = verdadeiro
+          }
+          se (opcao_sub == 3) {
+            destino_reservado = "TRAPPIST-1e (Céu de 7 Planetas)"
+            possui_reserva = verdadeiro
+          }
+          se (opcao_sub >= 1 e opcao_sub <= 3) {
+            escreva("\nPassagem reservada com sucesso para: ", destino_reservado, "!")
+            escreva("\nPressione ENTER para continuar... ")
+            leia(opcao_sub)
+            retorne 5
+          }
+          pare
+          
+        caso 4:
+          limpa()
+          escreva("\n--- TURISMO EM BURACO NEGRO ---\n\n")
+          escreva("1) Gargantua (Órbita Segura no Horizonte de Eventos)\n\n")
+          escreva("Escolha o seu destino (ou 0 para voltar): ")
+          leia(opcao_sub)
+          
+          se (opcao_sub == 1) {
+            destino_reservado = "Gargantua (Órbita de Horizonte de Eventos)" 
+            possui_reserva = verdadeiro // Corrigido o '=' que faltava
+            escreva("\nPassagem reservada com sucesso para: ", destino_reservado, "!")
+            escreva("\nAviso: Dilatação temporal pode se aplicar.")
+            escreva("\nPressione ENTER para continuar... ")
+            leia(opcao_sub)
+            retorne 5
+          }
+          pare
+          
+        caso 5:
+          pare
+          
+        caso contrario:
+          limpa()
+          escreva("Opção inválida!\n")
+          escreva("\nPressione ENTER para continuar... ")
+          leia(opcao_sub)
+      }
+    } enquanto (opcao != 5)
+    retorne opcao
+  }
+
+  // FUNÇÃO COMPRAR PASSAGEM
+  funcao comprar_passagem() {
+    limpa()
+    escreva("\n=== CONTRATAR PACOTE DE VIAGEM ===\n\n")
+    escreva("Redirecionando para o catálogo de sondas e portais...\n")
+    menu_destinos()
+  }
+
+  // FUNÇÃO VER ITINERÁRIO
+  funcao ver_itinerario() {
+    cadeia tecla
+    limpa()
+    escreva("\n=== SEU ITINERÁRIO DE VIAGEM ===\n\n")
+    se (possui_reserva) {
+      escreva("Status: PASSAGEM CONFIRMADA\n")
+      escreva("Destino: ", destino_reservado, "\n")
+      escreva("Embarque: Portão Espacial 07 - Próxima Janela de Lançamento\n")
+    } senao {
+      escreva("Status: NENHUMA VIAGEM AGENDADA\n")
+      escreva("Explore o nosso catálogo para garantir seu assento na próxima nave!\n")
+    }
+    escreva("\nPressione ENTER para voltar... ")
+    leia(tecla)
+  }
+
+  // FUNÇÃO CANCELAR VIAGEM
+  funcao cancelar_viagem() {
+    cadeia tecla
+    inteiro confirmacao
+    limpa()
+    escreva("\n=== CANCELAMENTO DE PASSAGEM ===\n\n")
+    se (possui_reserva) {
+      escreva("Você possui uma viagem agendada para: ", destino_reservado, "\n\n")
+      escreva("Deseja realmente cancelar?\n")
+      escreva("1) Sim, reembolsar créditos\n")
+      escreva("2) Não, manter minha aventura\n")
+      escreva("Escolha: ")
+      leia(confirmacao)
+      se (confirmacao == 1) {
+        destino_reservado = "Nenhum pacote contratado"
+        possui_reserva = falso
+        escreva("\nViagem cancelada com sucesso. Estorno enviado para sua carteira galáctica.")
+      } senao {
+        escreva("\nCancelamento abortado. Boa viagem!")
+      }
+    } senao {
+      escreva("Você não possui nenhuma viagem agendada para cancelar.\n")
+    }
+    escreva("\nPressione ENTER para voltar... ")
+    leia(tecla)
+  }
+
+  // FUNÇÃO MENU PRINCIPAL
+  funcao menu_principal() {
+    inteiro opcao
+    faca {
+      limpa()
+      escreva("\n===================================\n")
+      escreva(" AGÊNCIA ESPACIAL SPACE TOUR \n")
+      escreva("===================================\n\n")
+      escreva("1) Reservar Destino Galáctico\n")
+      escreva("2) Ver Meu Itinerário\n")
+      escreva("3) Cancelar Pacote de Viagem\n")
+      escreva("4) Sair do Terminal\n\n")
+      escreva("Escolha uma opção interestelar: ")
+      leia(opcao)
+      
+      escolha (opcao) {
+        caso 1:
+          comprar_passagem()
+          pare
+        caso 2:
+          ver_itinerario()
+          pare
+        caso 3:
+          cancelar_viagem()
+          pare
+        caso 4:
+          limpa()
+          escreva("\n===================================\n")
+          escreva(" TERMINAL ENCERRADO. BOA VIAGEM! \n")
+          escreva("===================================\n\n")
+          pare
+        caso contrario:
+          limpa()
+          escreva("Opção inválida cósmica!\n")
+          escreva("\nPressione ENTER para tentar novamente... ")
+          leia(opcao)
+      }
+    } enquanto (opcao != 4)
+  }
+
+  // INÍCIO DO PROGRAMA
+  funcao inicio() {
+    menu_principal()
+  }
+}
